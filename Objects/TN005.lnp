@@ -1,0 +1,11 @@
+--cpu Cortex-M0
+".\objects\main.o"
+".\objects\micro_esb.o"
+".\objects\twi_hw_master.o"
+".\objects\arm_startup_nrf51.o"
+".\objects\system_nrf51.o"
+".\objects\nrf_delay.o"
+--library_type=microlib --strict --scatter ".\TN005.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\TN005.map" -o .\Objects\TN005.axf
