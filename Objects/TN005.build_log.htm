@@ -21,7 +21,7 @@ Target DLL:      UL2CM3.DLL V1.156.1.0
 Dialog DLL:      TARMCM1.DLL V1.9.0.0
  
 <h2>Project:</h2>
-Z:\Documents\TempSensors\NodeCode\TN005stage\TN005.uvprojx
+Z:\Documents\TempSensors\NodeCode\TN005\TN005.uvprojx
 Project File Date:  03/10/2017
 
 <h2>Output:</h2>
@@ -34,7 +34,7 @@ assembling arm_startup_nrf51.s...
 compiling system_nrf51.c...
 compiling nrf_delay.c...
 linking...
-Program Size: Code=4424 RO-data=268 RW-data=72 ZI-data=2896  
+Program Size: Code=4408 RO-data=268 RW-data=72 ZI-data=2896  
 FromELF: creating hex file...
 ".\Objects\TN005.axf" - 0 Error(s), 0 Warning(s).
 
@@ -54,13 +54,13 @@ Package Vendor: NordicSemiconductor
 
 Package Vendor: NordicSemiconductor
                 http://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_Drivers/NordicSemiconductor.nRF_Drivers.4.0.0-2.alpha.pack
-                NordicSemiconductor::nRF_Drivers:nrf_delay:4.0.0-2.alpha
+                NordicSemiconductor::nRF_Drivers:nrf_gpio:4.0.0-2.alpha
                 Drivers for Nordic Semiconductor nRF family.
-   * Component: nrf_delay Version: 4.0.0-2.alpha
    * Component: nrf_gpio Version: 4.0.0-2.alpha
+   * Component: nrf_delay Version: 4.0.0-2.alpha
 
 <h2>Collection of Component include folders:</h2>
-  Z:\Documents\TempSensors\NodeCode\TN005stage\RTE
+  Z:\Documents\TempSensors\NodeCode\TN005\RTE
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.3.2\Device\Include
   C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_Drivers\4.0.0-2.alpha\delay
@@ -71,17 +71,17 @@ Package Vendor: NordicSemiconductor
    * Component: ARM::CMSIS:CORE:4.3.0
 
    * Component: NordicSemiconductor::Device:Startup:8.3.2
-      Include file:  Device\Include\system_nrf51.h
       Source file:   Device\Source\arm\arm_startup_nrf51.s
       Source file:   Device\Source\system_nrf51.c
-
-   * Component: NordicSemiconductor::nRF_Drivers:nrf_delay:4.0.0-2.alpha
-      Source file:   delay\nrf_delay.c
-      Include file:  delay\nrf_delay.h
+      Include file:  Device\Include\system_nrf51.h
 
    * Component: NordicSemiconductor::nRF_Drivers:nrf_gpio:4.0.0-2.alpha
       Include file:  hal\nrf_gpio.h
-Build Time Elapsed:  00:00:03
+
+   * Component: NordicSemiconductor::nRF_Drivers:nrf_delay:4.0.0-2.alpha
+      Include file:  delay\nrf_delay.h
+      Source file:   delay\nrf_delay.c
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

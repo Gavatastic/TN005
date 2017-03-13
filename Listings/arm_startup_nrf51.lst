@@ -335,14 +335,14 @@ ARM Macro Assembler    Page 6
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
 ork --depend=.\objects\arm_startup_nrf51.d -o.\objects\arm_startup_nrf51.o -IZ:
-\Documents\TempSensors\NodeCode\TN005stage\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\
-4.5.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyP
-ack\8.3.2\Device\Include -IC:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_Drivers\
-4.0.0-2.alpha\delay -IC:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_Drivers\4.0.0
--2.alpha\hal --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --pred
-efine="__UVISION_VERSION SETA 517" --predefine="_RTE_ SETA 1" --predefine="NRF5
-1 SETA 1" --list=.\listings\arm_startup_nrf51.lst RTE\Device\nRF51822_xxAC\arm_
-startup_nrf51.s
+\Documents\TempSensors\NodeCode\TN005\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0
+\CMSIS\Include -IC:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8
+.3.2\Device\Include -IC:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_Drivers\4.0.0
+-2.alpha\delay -IC:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_Drivers\4.0.0-2.al
+pha\hal --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine
+="__UVISION_VERSION SETA 517" --predefine="_RTE_ SETA 1" --predefine="NRF51 SET
+A 1" --list=.\listings\arm_startup_nrf51.lst RTE\Device\nRF51822_xxAC\arm_start
+up_nrf51.s
 
 
 

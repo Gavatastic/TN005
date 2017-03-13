@@ -38,9 +38,9 @@
 #define LED_RED        5
 #define LED_AMB        4
 #define LED_GRN        3
-#define SW_LED		2
-#define SW_TEST   1
-#define SW_WAKE   0
+
+#define SW_TEST   0
+
 
 
 
@@ -84,7 +84,7 @@ void uesb_event_handler()
     {   
 		ackd=true;
 		// flash green LED if switch 2 set to ON
-		if (nrf_gpio_pin_read(SW_LED)==0) {	
+		if (nrf_gpio_pin_read(SW_TEST)==0) {	
 			nrf_gpio_pin_set(LED_GRN);
 			nrf_delay_ms(25);
 			nrf_gpio_pin_clear(LED_GRN);			
@@ -95,7 +95,7 @@ void uesb_event_handler()
     {
         uesb_flush_tx();
 		// flash red LED if switch 2 set to ON
-		if (nrf_gpio_pin_read(SW_LED)==0) {	
+		if (nrf_gpio_pin_read(SW_TEST)==0) {	
 			nrf_gpio_pin_set(LED_RED);
 			nrf_delay_ms(25);
 			nrf_gpio_pin_clear(LED_RED);
@@ -166,11 +166,11 @@ int main(void)
 																| (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos);
 	
 	// Set switches as inputs pulled high
-	nrf_gpio_cfg_input(SW_LED,NRF_GPIO_PIN_PULLUP);
-	nrf_gpio_cfg_input(SW_TEST,NRF_GPIO_PIN_PULLUP);
+	//nrf_gpio_cfg_input(SW_LED,NRF_GPIO_PIN_PULLUP);
+	//nrf_gpio_cfg_input(SW_TEST,NRF_GPIO_PIN_PULLUP);
 	
-	// Configure SW_WAKE with SENSE enabled so that CPU is enabled (exit System-On low power mode) when pressing Button 2
-  nrf_gpio_cfg_sense_input(SW_WAKE, NRF_GPIO_PIN_PULLUP, NRF_GPIO_PIN_SENSE_LOW);
+	// Configure SW_TEST with SENSE enabled so that CPU is enabled (exit System-On low power mode) when pressing Button 0
+  nrf_gpio_cfg_sense_input(SW_TEST, NRF_GPIO_PIN_PULLUP, NRF_GPIO_PIN_SENSE_LOW);
 	
 	// Set the GPIOTE PORT event as interrupt source, and enable interrupts for GPIOTE
   NRF_GPIOTE->INTENSET = GPIOTE_INTENSET_PORT_Msk;
@@ -272,8 +272,8 @@ int main(void)
         ackd=false;
 
 				// Set switches as inputs pulled high
-				nrf_gpio_cfg_input(SW_LED,NRF_GPIO_PIN_PULLUP);
-				nrf_gpio_cfg_input(SW_TEST,NRF_GPIO_PIN_PULLUP);
+				//nrf_gpio_cfg_input(SW_LED,NRF_GPIO_PIN_PULLUP);
+				//nrf_gpio_cfg_input(SW_TEST,NRF_GPIO_PIN_PULLUP);
 
 			
 			
@@ -331,8 +331,8 @@ int main(void)
 				nrf_delay_ms(10);
 
 				// set switches to NOPULL before going to sleep
-				nrf_gpio_cfg_input(SW_LED, NRF_GPIO_PIN_NOPULL);
-				nrf_gpio_cfg_input(SW_TEST, NRF_GPIO_PIN_NOPULL);
+				//nrf_gpio_cfg_input(SW_LED, NRF_GPIO_PIN_NOPULL);
+				//nrf_gpio_cfg_input(SW_TEST, NRF_GPIO_PIN_NOPULL);
 
 				
 				// --------------- SLEEP ------------------------
@@ -343,14 +343,22 @@ int main(void)
 				NRF_RTC1->EVTENSET = RTC_EVTEN_COMPARE0_Msk; 
 				NRF_RTC1->INTENSET = RTC_INTENSET_COMPARE0_Msk; 
 				
+				nrf_gpio_cfg_input(SW_TEST,NRF_GPIO_PIN_PULLUP); // we need to pull up before testing state of pin
 				if (nrf_gpio_pin_read(SW_TEST)==0) {	
-						NRF_RTC1->CC[0] = 32768;
-						tx_payload.data[Test] = 1;
+					
+						// we're in test mode......
+						nrf_gpio_cfg_input(SW_TEST,NRF_GPIO_PIN_NOPULL); // set pin as standard input, no pull-up, so it doesn't interrupt sleep
+						NRF_RTC1->CC[0] = 32768; // 1 second
+						tx_payload.data[Test] = 1;  // set test flag in payload
 				}
 				else
 				{		
-						NRF_RTC1->CC[0] = 32768*60*5;
-						tx_payload.data[Test] = 0;
+						// we're not in test mode ....
+	//					nrf_gpio_cfg_sense_input(SW_TEST, NRF_GPIO_PIN_PULLUP, NRF_GPIO_PIN_SENSE_LOW); // set pin as sense so that it will interrupt if pressed
+						nrf_gpio_cfg_sense_input(SW_TEST, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_SENSE_LOW); // set pin as sense so that it will interrupt if pressed
+
+						NRF_RTC1->CC[0] = 32768*60*5;  // 5 minutes
+						tx_payload.data[Test] = 0;  // test flag in payload not set
 				}				
 
 				NVIC_EnableIRQ(RTC1_IRQn);				

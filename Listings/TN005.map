@@ -6,8 +6,7 @@ Section Cross References
 
     main.o(i.GPIOTE_IRQHandler) refers to main.o(.data) for .data
     main.o(i.RTC1_IRQHandler) refers to main.o(.data) for .data
-    main.o(i.main) refers to main.o(i.nrf_gpio_cfg_input) for nrf_gpio_cfg_input
-    main.o(i.main) refers to main.o(i.nrf_gpio_cfg) for nrf_gpio_cfg
+    main.o(i.main) refers to main.o(i.nrf_gpio_cfg_sense_input) for nrf_gpio_cfg_sense_input
     main.o(i.main) refers to micro_esb.o(i.uesb_set_tx_power) for uesb_set_tx_power
     main.o(i.main) refers to memcpya.o(.text) for __aeabi_memcpy4
     main.o(i.main) refers to micro_esb.o(i.uesb_init) for uesb_init
@@ -16,11 +15,13 @@ Section Cross References
     main.o(i.main) refers to twi_hw_master.o(i.twi_master_transfer) for twi_master_transfer
     main.o(i.main) refers to micro_esb.o(i.uesb_write_tx_payload) for uesb_write_tx_payload
     main.o(i.main) refers to nrf_delay.o(i.nrf_delay_ms) for nrf_delay_ms
+    main.o(i.main) refers to main.o(i.nrf_gpio_cfg_input) for nrf_gpio_cfg_input
     main.o(i.main) refers to main.o(.constdata) for .constdata
     main.o(i.main) refers to main.o(i.uesb_event_handler) for uesb_event_handler
     main.o(i.main) refers to main.o(.bss) for .bss
     main.o(i.main) refers to main.o(.data) for .data
     main.o(i.nrf_gpio_cfg_input) refers to main.o(i.nrf_gpio_cfg) for nrf_gpio_cfg
+    main.o(i.nrf_gpio_cfg_sense_input) refers to main.o(i.nrf_gpio_cfg) for nrf_gpio_cfg
     main.o(i.uesb_event_handler) refers to micro_esb.o(i.uesb_get_clear_interrupts) for uesb_get_clear_interrupts
     main.o(i.uesb_event_handler) refers to nrf_delay.o(i.nrf_delay_ms) for nrf_delay_ms
     main.o(i.uesb_event_handler) refers to micro_esb.o(i.uesb_flush_tx) for uesb_flush_tx
@@ -212,19 +213,19 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      192  arm_startup_nrf51.o(RESET)
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/unhosted.c              0x00000000   Number         0  uread4.o ABSOLUTE
@@ -277,55 +278,57 @@ Image Symbol Table
     i.is_manual_peripheral_setup_needed      0x00000370   Section        0  system_nrf51.o(i.is_manual_peripheral_setup_needed)
     is_manual_peripheral_setup_needed        0x00000371   Thumb Code    66  system_nrf51.o(i.is_manual_peripheral_setup_needed)
     i.main                                   0x000003b8   Section        0  main.o(i.main)
-    i.nrf_delay_ms                           0x00000658   Section        0  nrf_delay.o(i.nrf_delay_ms)
-    i.nrf_gpio_cfg                           0x00000674   Section        0  main.o(i.nrf_gpio_cfg)
-    nrf_gpio_cfg                             0x00000675   Thumb Code    32  main.o(i.nrf_gpio_cfg)
-    i.nrf_gpio_cfg_input                     0x00000698   Section        0  main.o(i.nrf_gpio_cfg_input)
-    nrf_gpio_cfg_input                       0x00000699   Thumb Code    18  main.o(i.nrf_gpio_cfg_input)
-    i.on_radio_disabled_esb_dpl_tx           0x000006ac   Section        0  micro_esb.o(i.on_radio_disabled_esb_dpl_tx)
-    on_radio_disabled_esb_dpl_tx             0x000006ad   Thumb Code    72  micro_esb.o(i.on_radio_disabled_esb_dpl_tx)
-    i.on_radio_disabled_esb_dpl_tx_noack     0x0000071c   Section        0  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_noack)
-    on_radio_disabled_esb_dpl_tx_noack       0x0000071d   Thumb Code    28  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_noack)
-    i.on_radio_disabled_esb_dpl_tx_wait_for_ack 0x0000073c   Section        0  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_wait_for_ack)
-    on_radio_disabled_esb_dpl_tx_wait_for_ack 0x0000073d   Thumb Code   158  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_wait_for_ack)
-    i.on_radio_end_sb_rx                     0x00000804   Section        0  micro_esb.o(i.on_radio_end_sb_rx)
-    on_radio_end_sb_rx                       0x00000805   Thumb Code    42  micro_esb.o(i.on_radio_end_sb_rx)
-    i.on_radio_end_sb_tx                     0x00000838   Section        0  micro_esb.o(i.on_radio_end_sb_tx)
-    on_radio_end_sb_tx                       0x00000839   Thumb Code   116  micro_esb.o(i.on_radio_end_sb_tx)
-    i.rx_fifo_push_rfbuf                     0x000008cc   Section        0  micro_esb.o(i.rx_fifo_push_rfbuf)
-    rx_fifo_push_rfbuf                       0x000008cd   Thumb Code   112  micro_esb.o(i.rx_fifo_push_rfbuf)
-    i.start_tx_transaction                   0x00000948   Section        0  micro_esb.o(i.start_tx_transaction)
-    start_tx_transaction                     0x00000949   Thumb Code   278  micro_esb.o(i.start_tx_transaction)
-    i.twi_master_clear_bus                   0x00000a90   Section        0  twi_hw_master.o(i.twi_master_clear_bus)
-    twi_master_clear_bus                     0x00000a91   Thumb Code   110  twi_hw_master.o(i.twi_master_clear_bus)
-    i.twi_master_init                        0x00000b10   Section        0  twi_hw_master.o(i.twi_master_init)
-    i.twi_master_read                        0x00000b64   Section        0  twi_hw_master.o(i.twi_master_read)
-    twi_master_read                          0x00000b65   Thumb Code   174  twi_hw_master.o(i.twi_master_read)
-    i.twi_master_transfer                    0x00000c28   Section        0  twi_hw_master.o(i.twi_master_transfer)
-    i.twi_master_write                       0x00000c68   Section        0  twi_hw_master.o(i.twi_master_write)
-    twi_master_write                         0x00000c69   Thumb Code   138  twi_hw_master.o(i.twi_master_write)
-    i.tx_fifo_remove_last                    0x00000d08   Section        0  micro_esb.o(i.tx_fifo_remove_last)
-    tx_fifo_remove_last                      0x00000d09   Thumb Code    44  micro_esb.o(i.tx_fifo_remove_last)
-    i.uesb_event_handler                     0x00000d38   Section        0  main.o(i.uesb_event_handler)
-    i.uesb_flush_tx                          0x00000dcc   Section        0  micro_esb.o(i.uesb_flush_tx)
-    i.uesb_get_clear_interrupts              0x00000e00   Section        0  micro_esb.o(i.uesb_get_clear_interrupts)
-    i.uesb_get_tx_attempts                   0x00000e24   Section        0  micro_esb.o(i.uesb_get_tx_attempts)
-    i.uesb_init                              0x00000e40   Section        0  micro_esb.o(i.uesb_init)
-    i.uesb_read_rx_payload                   0x00000ef0   Section        0  micro_esb.o(i.uesb_read_rx_payload)
-    i.uesb_set_address                       0x00000f60   Section        0  micro_esb.o(i.uesb_set_address)
-    i.uesb_set_tx_power                      0x00000fd0   Section        0  micro_esb.o(i.uesb_set_tx_power)
-    i.uesb_write_tx_payload                  0x00000ffc   Section        0  micro_esb.o(i.uesb_write_tx_payload)
-    i.update_radio_parameters                0x00001008   Section        0  micro_esb.o(i.update_radio_parameters)
-    update_radio_parameters                  0x00001009   Thumb Code   206  micro_esb.o(i.update_radio_parameters)
-    i.update_rf_payload_format_esb           0x00001100   Section        0  micro_esb.o(i.update_rf_payload_format_esb)
-    update_rf_payload_format_esb             0x00001101   Thumb Code    30  micro_esb.o(i.update_rf_payload_format_esb)
-    i.update_rf_payload_format_esb_dpl       0x0000112c   Section        0  micro_esb.o(i.update_rf_payload_format_esb_dpl)
-    update_rf_payload_format_esb_dpl         0x0000112d   Thumb Code    22  micro_esb.o(i.update_rf_payload_format_esb_dpl)
-    i.update_rf_payload_format_sb            0x00001154   Section        0  micro_esb.o(i.update_rf_payload_format_sb)
-    update_rf_payload_format_sb              0x00001155   Thumb Code    30  micro_esb.o(i.update_rf_payload_format_sb)
-    i.write_tx_payload                       0x0000117c   Section        0  micro_esb.o(i.write_tx_payload)
-    write_tx_payload                         0x0000117d   Thumb Code   122  micro_esb.o(i.write_tx_payload)
-    .constdata                               0x00001208   Section       44  main.o(.constdata)
+    i.nrf_delay_ms                           0x00000638   Section        0  nrf_delay.o(i.nrf_delay_ms)
+    i.nrf_gpio_cfg                           0x00000654   Section        0  main.o(i.nrf_gpio_cfg)
+    nrf_gpio_cfg                             0x00000655   Thumb Code    32  main.o(i.nrf_gpio_cfg)
+    i.nrf_gpio_cfg_input                     0x00000678   Section        0  main.o(i.nrf_gpio_cfg_input)
+    nrf_gpio_cfg_input                       0x00000679   Thumb Code    18  main.o(i.nrf_gpio_cfg_input)
+    i.nrf_gpio_cfg_sense_input               0x0000068a   Section        0  main.o(i.nrf_gpio_cfg_sense_input)
+    nrf_gpio_cfg_sense_input                 0x0000068b   Thumb Code    20  main.o(i.nrf_gpio_cfg_sense_input)
+    i.on_radio_disabled_esb_dpl_tx           0x000006a0   Section        0  micro_esb.o(i.on_radio_disabled_esb_dpl_tx)
+    on_radio_disabled_esb_dpl_tx             0x000006a1   Thumb Code    72  micro_esb.o(i.on_radio_disabled_esb_dpl_tx)
+    i.on_radio_disabled_esb_dpl_tx_noack     0x00000710   Section        0  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_noack)
+    on_radio_disabled_esb_dpl_tx_noack       0x00000711   Thumb Code    28  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_noack)
+    i.on_radio_disabled_esb_dpl_tx_wait_for_ack 0x00000730   Section        0  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_wait_for_ack)
+    on_radio_disabled_esb_dpl_tx_wait_for_ack 0x00000731   Thumb Code   158  micro_esb.o(i.on_radio_disabled_esb_dpl_tx_wait_for_ack)
+    i.on_radio_end_sb_rx                     0x000007f8   Section        0  micro_esb.o(i.on_radio_end_sb_rx)
+    on_radio_end_sb_rx                       0x000007f9   Thumb Code    42  micro_esb.o(i.on_radio_end_sb_rx)
+    i.on_radio_end_sb_tx                     0x0000082c   Section        0  micro_esb.o(i.on_radio_end_sb_tx)
+    on_radio_end_sb_tx                       0x0000082d   Thumb Code   116  micro_esb.o(i.on_radio_end_sb_tx)
+    i.rx_fifo_push_rfbuf                     0x000008c0   Section        0  micro_esb.o(i.rx_fifo_push_rfbuf)
+    rx_fifo_push_rfbuf                       0x000008c1   Thumb Code   112  micro_esb.o(i.rx_fifo_push_rfbuf)
+    i.start_tx_transaction                   0x0000093c   Section        0  micro_esb.o(i.start_tx_transaction)
+    start_tx_transaction                     0x0000093d   Thumb Code   278  micro_esb.o(i.start_tx_transaction)
+    i.twi_master_clear_bus                   0x00000a84   Section        0  twi_hw_master.o(i.twi_master_clear_bus)
+    twi_master_clear_bus                     0x00000a85   Thumb Code   110  twi_hw_master.o(i.twi_master_clear_bus)
+    i.twi_master_init                        0x00000b04   Section        0  twi_hw_master.o(i.twi_master_init)
+    i.twi_master_read                        0x00000b58   Section        0  twi_hw_master.o(i.twi_master_read)
+    twi_master_read                          0x00000b59   Thumb Code   174  twi_hw_master.o(i.twi_master_read)
+    i.twi_master_transfer                    0x00000c1c   Section        0  twi_hw_master.o(i.twi_master_transfer)
+    i.twi_master_write                       0x00000c5c   Section        0  twi_hw_master.o(i.twi_master_write)
+    twi_master_write                         0x00000c5d   Thumb Code   138  twi_hw_master.o(i.twi_master_write)
+    i.tx_fifo_remove_last                    0x00000cfc   Section        0  micro_esb.o(i.tx_fifo_remove_last)
+    tx_fifo_remove_last                      0x00000cfd   Thumb Code    44  micro_esb.o(i.tx_fifo_remove_last)
+    i.uesb_event_handler                     0x00000d2c   Section        0  main.o(i.uesb_event_handler)
+    i.uesb_flush_tx                          0x00000dbc   Section        0  micro_esb.o(i.uesb_flush_tx)
+    i.uesb_get_clear_interrupts              0x00000df0   Section        0  micro_esb.o(i.uesb_get_clear_interrupts)
+    i.uesb_get_tx_attempts                   0x00000e14   Section        0  micro_esb.o(i.uesb_get_tx_attempts)
+    i.uesb_init                              0x00000e30   Section        0  micro_esb.o(i.uesb_init)
+    i.uesb_read_rx_payload                   0x00000ee0   Section        0  micro_esb.o(i.uesb_read_rx_payload)
+    i.uesb_set_address                       0x00000f50   Section        0  micro_esb.o(i.uesb_set_address)
+    i.uesb_set_tx_power                      0x00000fc0   Section        0  micro_esb.o(i.uesb_set_tx_power)
+    i.uesb_write_tx_payload                  0x00000fec   Section        0  micro_esb.o(i.uesb_write_tx_payload)
+    i.update_radio_parameters                0x00000ff8   Section        0  micro_esb.o(i.update_radio_parameters)
+    update_radio_parameters                  0x00000ff9   Thumb Code   206  micro_esb.o(i.update_radio_parameters)
+    i.update_rf_payload_format_esb           0x000010f0   Section        0  micro_esb.o(i.update_rf_payload_format_esb)
+    update_rf_payload_format_esb             0x000010f1   Thumb Code    30  micro_esb.o(i.update_rf_payload_format_esb)
+    i.update_rf_payload_format_esb_dpl       0x0000111c   Section        0  micro_esb.o(i.update_rf_payload_format_esb_dpl)
+    update_rf_payload_format_esb_dpl         0x0000111d   Thumb Code    22  micro_esb.o(i.update_rf_payload_format_esb_dpl)
+    i.update_rf_payload_format_sb            0x00001144   Section        0  micro_esb.o(i.update_rf_payload_format_sb)
+    update_rf_payload_format_sb              0x00001145   Thumb Code    30  micro_esb.o(i.update_rf_payload_format_sb)
+    i.write_tx_payload                       0x0000116c   Section        0  micro_esb.o(i.write_tx_payload)
+    write_tx_payload                         0x0000116d   Thumb Code   122  micro_esb.o(i.write_tx_payload)
+    .constdata                               0x000011f8   Section       44  main.o(.constdata)
     .data                                    0x20000000   Section       16  main.o(.data)
     rf_interrupts                            0x20000004   Data           4  main.o(.data)
     tx_attempts                              0x20000008   Data           4  main.o(.data)
@@ -431,21 +434,21 @@ Image Symbol Table
     __scatterload_copy                       0x000002d3   Thumb Code    14  handlers.o(i.__scatterload_copy)
     __scatterload_null                       0x000002e1   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x000002e3   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x000003b9   Thumb Code   590  main.o(i.main)
-    nrf_delay_ms                             0x00000659   Thumb Code    24  nrf_delay.o(i.nrf_delay_ms)
-    twi_master_init                          0x00000b11   Thumb Code    62  twi_hw_master.o(i.twi_master_init)
-    twi_master_transfer                      0x00000c29   Thumb Code    58  twi_hw_master.o(i.twi_master_transfer)
-    uesb_event_handler                       0x00000d39   Thumb Code   134  main.o(i.uesb_event_handler)
-    uesb_flush_tx                            0x00000dcd   Thumb Code    42  micro_esb.o(i.uesb_flush_tx)
-    uesb_get_clear_interrupts                0x00000e01   Thumb Code    30  micro_esb.o(i.uesb_get_clear_interrupts)
-    uesb_get_tx_attempts                     0x00000e25   Thumb Code    22  micro_esb.o(i.uesb_get_tx_attempts)
-    uesb_init                                0x00000e41   Thumb Code   136  micro_esb.o(i.uesb_init)
-    uesb_read_rx_payload                     0x00000ef1   Thumb Code    98  micro_esb.o(i.uesb_read_rx_payload)
-    uesb_set_address                         0x00000f61   Thumb Code   104  micro_esb.o(i.uesb_set_address)
-    uesb_set_tx_power                        0x00000fd1   Thumb Code    34  micro_esb.o(i.uesb_set_tx_power)
-    uesb_write_tx_payload                    0x00000ffd   Thumb Code    10  micro_esb.o(i.uesb_write_tx_payload)
-    Region$$Table$$Base                      0x00001234   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001254   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x000003b9   Thumb Code   558  main.o(i.main)
+    nrf_delay_ms                             0x00000639   Thumb Code    24  nrf_delay.o(i.nrf_delay_ms)
+    twi_master_init                          0x00000b05   Thumb Code    62  twi_hw_master.o(i.twi_master_init)
+    twi_master_transfer                      0x00000c1d   Thumb Code    58  twi_hw_master.o(i.twi_master_transfer)
+    uesb_event_handler                       0x00000d2d   Thumb Code   130  main.o(i.uesb_event_handler)
+    uesb_flush_tx                            0x00000dbd   Thumb Code    42  micro_esb.o(i.uesb_flush_tx)
+    uesb_get_clear_interrupts                0x00000df1   Thumb Code    30  micro_esb.o(i.uesb_get_clear_interrupts)
+    uesb_get_tx_attempts                     0x00000e15   Thumb Code    22  micro_esb.o(i.uesb_get_tx_attempts)
+    uesb_init                                0x00000e31   Thumb Code   136  micro_esb.o(i.uesb_init)
+    uesb_read_rx_payload                     0x00000ee1   Thumb Code    98  micro_esb.o(i.uesb_read_rx_payload)
+    uesb_set_address                         0x00000f51   Thumb Code   104  micro_esb.o(i.uesb_set_address)
+    uesb_set_tx_power                        0x00000fc1   Thumb Code    34  micro_esb.o(i.uesb_set_tx_power)
+    uesb_write_tx_payload                    0x00000fed   Thumb Code    10  micro_esb.o(i.uesb_write_tx_payload)
+    Region$$Table$$Base                      0x00001224   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001244   Number         0  anon$$obj.o(Region$$Table)
     ackd                                     0x20000000   Data           1  main.o(.data)
     awake                                    0x20000001   Data           1  main.o(.data)
     SystemCoreClock                          0x20000044   Data           4  system_nrf51.o(.data)
@@ -459,90 +462,91 @@ Memory Map of the image
 
   Image Entry point : 0x000000c1
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x0000129c, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x0000128c, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00001254, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00001244, Max: 0x00040000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x000000c0   Data   RO          402    RESET               arm_startup_nrf51.o
-    0x000000c0   0x00000000   Code   RO          471  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x000000c0   0x00000004   Code   RO          480    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x000000c4   0x00000004   Code   RO          483    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x000000c8   0x00000000   Code   RO          485    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x000000c8   0x00000000   Code   RO          487    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x000000c8   0x00000008   Code   RO          488    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x000000d0   0x00000000   Code   RO          490    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x000000d0   0x00000000   Code   RO          492    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x000000d0   0x00000004   Code   RO          481    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
-    0x000000d4   0x0000001e   Code   RO          351    .emb_text           twi_hw_master.o
+    0x00000000   0x000000c0   Data   RO          407    RESET               arm_startup_nrf51.o
+    0x000000c0   0x00000000   Code   RO          476  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x000000c0   0x00000004   Code   RO          485    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x000000c4   0x00000004   Code   RO          488    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x000000c8   0x00000000   Code   RO          490    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x000000c8   0x00000000   Code   RO          492    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x000000c8   0x00000008   Code   RO          493    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x000000d0   0x00000000   Code   RO          495    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x000000d0   0x00000000   Code   RO          497    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x000000d0   0x00000004   Code   RO          486    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x000000d4   0x0000001e   Code   RO          356    .emb_text           twi_hw_master.o
     0x000000f2   0x00000002   PAD
-    0x000000f4   0x0000001e   Code   RO          446    .emb_text           nrf_delay.o
+    0x000000f4   0x0000001e   Code   RO          451    .emb_text           nrf_delay.o
     0x00000112   0x00000002   PAD
-    0x00000114   0x00000038   Code   RO          403    .text               arm_startup_nrf51.o
-    0x0000014c   0x00000024   Code   RO          474    .text               mc_p.l(memcpya.o)
-    0x00000170   0x00000014   Code   RO          478    .text               mc_p.l(uread4.o)
-    0x00000184   0x00000024   Code   RO          494    .text               mc_p.l(init.o)
+    0x00000114   0x00000038   Code   RO          408    .text               arm_startup_nrf51.o
+    0x0000014c   0x00000024   Code   RO          479    .text               mc_p.l(memcpya.o)
+    0x00000170   0x00000014   Code   RO          483    .text               mc_p.l(uread4.o)
+    0x00000184   0x00000024   Code   RO          499    .text               mc_p.l(init.o)
     0x000001a8   0x0000001c   Code   RO            4    i.GPIOTE_IRQHandler  main.o
-    0x000001c4   0x00000014   Code   RO          132    i.NVIC_DisableIRQ   micro_esb.o
-    0x000001d8   0x00000014   Code   RO          133    i.NVIC_EnableIRQ    micro_esb.o
-    0x000001ec   0x00000054   Code   RO          134    i.RADIO_IRQHandler  micro_esb.o
+    0x000001c4   0x00000014   Code   RO          137    i.NVIC_DisableIRQ   micro_esb.o
+    0x000001d8   0x00000014   Code   RO          138    i.NVIC_EnableIRQ    micro_esb.o
+    0x000001ec   0x00000054   Code   RO          139    i.RADIO_IRQHandler  micro_esb.o
     0x00000240   0x00000024   Code   RO            5    i.RTC1_IRQHandler   main.o
-    0x00000264   0x00000054   Code   RO          410    i.SystemInit        system_nrf51.o
-    0x000002b8   0x0000001a   Code   RO          335    i.__ARM_common_switch8  micro_esb.o
-    0x000002d2   0x0000000e   Code   RO          498    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x000002e0   0x00000002   Code   RO          499    i.__scatterload_null  mc_p.l(handlers.o)
-    0x000002e2   0x0000000e   Code   RO          500    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x000002f0   0x00000034   Code   RO          135    i.bytewise_bit_swap  micro_esb.o
-    0x00000324   0x0000004c   Code   RO          136    i.initialize_fifos  micro_esb.o
-    0x00000370   0x00000048   Code   RO          411    i.is_manual_peripheral_setup_needed  system_nrf51.o
-    0x000003b8   0x000002a0   Code   RO            6    i.main              main.o
-    0x00000658   0x0000001c   Code   RO          447    i.nrf_delay_ms      nrf_delay.o
-    0x00000674   0x00000024   Code   RO            7    i.nrf_gpio_cfg      main.o
-    0x00000698   0x00000012   Code   RO            8    i.nrf_gpio_cfg_input  main.o
-    0x000006aa   0x00000002   PAD
-    0x000006ac   0x00000070   Code   RO          139    i.on_radio_disabled_esb_dpl_tx  micro_esb.o
-    0x0000071c   0x00000020   Code   RO          140    i.on_radio_disabled_esb_dpl_tx_noack  micro_esb.o
-    0x0000073c   0x000000c8   Code   RO          141    i.on_radio_disabled_esb_dpl_tx_wait_for_ack  micro_esb.o
-    0x00000804   0x00000034   Code   RO          142    i.on_radio_end_sb_rx  micro_esb.o
-    0x00000838   0x00000094   Code   RO          143    i.on_radio_end_sb_tx  micro_esb.o
-    0x000008cc   0x0000007c   Code   RO          144    i.rx_fifo_push_rfbuf  micro_esb.o
-    0x00000948   0x00000148   Code   RO          145    i.start_tx_transaction  micro_esb.o
-    0x00000a90   0x00000080   Code   RO          352    i.twi_master_clear_bus  twi_hw_master.o
-    0x00000b10   0x00000054   Code   RO          353    i.twi_master_init   twi_hw_master.o
-    0x00000b64   0x000000c4   Code   RO          354    i.twi_master_read   twi_hw_master.o
-    0x00000c28   0x00000040   Code   RO          355    i.twi_master_transfer  twi_hw_master.o
-    0x00000c68   0x000000a0   Code   RO          356    i.twi_master_write  twi_hw_master.o
-    0x00000d08   0x00000030   Code   RO          146    i.tx_fifo_remove_last  micro_esb.o
-    0x00000d38   0x00000094   Code   RO            9    i.uesb_event_handler  main.o
-    0x00000dcc   0x00000034   Code   RO          149    i.uesb_flush_tx     micro_esb.o
-    0x00000e00   0x00000024   Code   RO          150    i.uesb_get_clear_interrupts  micro_esb.o
-    0x00000e24   0x0000001c   Code   RO          151    i.uesb_get_tx_attempts  micro_esb.o
-    0x00000e40   0x000000b0   Code   RO          152    i.uesb_init         micro_esb.o
-    0x00000ef0   0x00000070   Code   RO          153    i.uesb_read_rx_payload  micro_esb.o
-    0x00000f60   0x00000070   Code   RO          154    i.uesb_set_address  micro_esb.o
-    0x00000fd0   0x0000002c   Code   RO          156    i.uesb_set_tx_power  micro_esb.o
-    0x00000ffc   0x0000000a   Code   RO          160    i.uesb_write_tx_payload  micro_esb.o
-    0x00001006   0x00000002   PAD
-    0x00001008   0x000000f8   Code   RO          162    i.update_radio_parameters  micro_esb.o
-    0x00001100   0x0000002c   Code   RO          163    i.update_rf_payload_format_esb  micro_esb.o
-    0x0000112c   0x00000028   Code   RO          164    i.update_rf_payload_format_esb_dpl  micro_esb.o
-    0x00001154   0x00000028   Code   RO          165    i.update_rf_payload_format_sb  micro_esb.o
-    0x0000117c   0x0000008c   Code   RO          166    i.write_tx_payload  micro_esb.o
-    0x00001208   0x0000002c   Data   RO           24    .constdata          main.o
-    0x00001234   0x00000020   Data   RO          496    Region$$Table       anon$$obj.o
+    0x00000264   0x00000054   Code   RO          415    i.SystemInit        system_nrf51.o
+    0x000002b8   0x0000001a   Code   RO          340    i.__ARM_common_switch8  micro_esb.o
+    0x000002d2   0x0000000e   Code   RO          503    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x000002e0   0x00000002   Code   RO          504    i.__scatterload_null  mc_p.l(handlers.o)
+    0x000002e2   0x0000000e   Code   RO          505    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x000002f0   0x00000034   Code   RO          140    i.bytewise_bit_swap  micro_esb.o
+    0x00000324   0x0000004c   Code   RO          141    i.initialize_fifos  micro_esb.o
+    0x00000370   0x00000048   Code   RO          416    i.is_manual_peripheral_setup_needed  system_nrf51.o
+    0x000003b8   0x00000280   Code   RO            6    i.main              main.o
+    0x00000638   0x0000001c   Code   RO          452    i.nrf_delay_ms      nrf_delay.o
+    0x00000654   0x00000024   Code   RO            7    i.nrf_gpio_cfg      main.o
+    0x00000678   0x00000012   Code   RO            8    i.nrf_gpio_cfg_input  main.o
+    0x0000068a   0x00000014   Code   RO            9    i.nrf_gpio_cfg_sense_input  main.o
+    0x0000069e   0x00000002   PAD
+    0x000006a0   0x00000070   Code   RO          144    i.on_radio_disabled_esb_dpl_tx  micro_esb.o
+    0x00000710   0x00000020   Code   RO          145    i.on_radio_disabled_esb_dpl_tx_noack  micro_esb.o
+    0x00000730   0x000000c8   Code   RO          146    i.on_radio_disabled_esb_dpl_tx_wait_for_ack  micro_esb.o
+    0x000007f8   0x00000034   Code   RO          147    i.on_radio_end_sb_rx  micro_esb.o
+    0x0000082c   0x00000094   Code   RO          148    i.on_radio_end_sb_tx  micro_esb.o
+    0x000008c0   0x0000007c   Code   RO          149    i.rx_fifo_push_rfbuf  micro_esb.o
+    0x0000093c   0x00000148   Code   RO          150    i.start_tx_transaction  micro_esb.o
+    0x00000a84   0x00000080   Code   RO          357    i.twi_master_clear_bus  twi_hw_master.o
+    0x00000b04   0x00000054   Code   RO          358    i.twi_master_init   twi_hw_master.o
+    0x00000b58   0x000000c4   Code   RO          359    i.twi_master_read   twi_hw_master.o
+    0x00000c1c   0x00000040   Code   RO          360    i.twi_master_transfer  twi_hw_master.o
+    0x00000c5c   0x000000a0   Code   RO          361    i.twi_master_write  twi_hw_master.o
+    0x00000cfc   0x00000030   Code   RO          151    i.tx_fifo_remove_last  micro_esb.o
+    0x00000d2c   0x00000090   Code   RO           10    i.uesb_event_handler  main.o
+    0x00000dbc   0x00000034   Code   RO          154    i.uesb_flush_tx     micro_esb.o
+    0x00000df0   0x00000024   Code   RO          155    i.uesb_get_clear_interrupts  micro_esb.o
+    0x00000e14   0x0000001c   Code   RO          156    i.uesb_get_tx_attempts  micro_esb.o
+    0x00000e30   0x000000b0   Code   RO          157    i.uesb_init         micro_esb.o
+    0x00000ee0   0x00000070   Code   RO          158    i.uesb_read_rx_payload  micro_esb.o
+    0x00000f50   0x00000070   Code   RO          159    i.uesb_set_address  micro_esb.o
+    0x00000fc0   0x0000002c   Code   RO          161    i.uesb_set_tx_power  micro_esb.o
+    0x00000fec   0x0000000a   Code   RO          165    i.uesb_write_tx_payload  micro_esb.o
+    0x00000ff6   0x00000002   PAD
+    0x00000ff8   0x000000f8   Code   RO          167    i.update_radio_parameters  micro_esb.o
+    0x000010f0   0x0000002c   Code   RO          168    i.update_rf_payload_format_esb  micro_esb.o
+    0x0000111c   0x00000028   Code   RO          169    i.update_rf_payload_format_esb_dpl  micro_esb.o
+    0x00001144   0x00000028   Code   RO          170    i.update_rf_payload_format_sb  micro_esb.o
+    0x0000116c   0x0000008c   Code   RO          171    i.write_tx_payload  micro_esb.o
+    0x000011f8   0x0000002c   Data   RO           25    .constdata          main.o
+    0x00001224   0x00000020   Data   RO          501    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000b98, Max: 0x00008000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000010   Data   RW           25    .data               main.o
-    0x20000010   0x00000034   Data   RW          168    .data               micro_esb.o
-    0x20000044   0x00000004   Data   RW          412    .data               system_nrf51.o
-    0x20000048   0x00000048   Zero   RW           10    .bss                main.o
-    0x20000090   0x00000308   Zero   RW          167    .bss                micro_esb.o
-    0x20000398   0x00000800   Zero   RW          400    STACK               arm_startup_nrf51.o
+    0x20000000   0x00000010   Data   RW           26    .data               main.o
+    0x20000010   0x00000034   Data   RW          173    .data               micro_esb.o
+    0x20000044   0x00000004   Data   RW          417    .data               system_nrf51.o
+    0x20000048   0x00000048   Zero   RW           11    .bss                main.o
+    0x20000090   0x00000308   Zero   RW          172    .bss                micro_esb.o
+    0x20000398   0x00000800   Zero   RW          405    STACK               arm_startup_nrf51.o
 
 
 ==============================================================================
@@ -552,15 +556,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        56         18        192          0       2048        636   arm_startup_nrf51.o
-       938        120         44         16         72      39244   main.o
-      2404        452          0         52        776      22016   micro_esb.o
-        58          4          0          0          0       1635   nrf_delay.o
-       156         26          0          4          0       1855   system_nrf51.o
-       662         90          0          0          0       4756   twi_hw_master.o
+        56         18        192          0       2048        628   arm_startup_nrf51.o
+       922        120         44         16         72      39612   main.o
+      2404        452          0         52        776      21868   micro_esb.o
+        58          4          0          0          0       1627   nrf_delay.o
+       156         26          0          4          0       1839   system_nrf51.o
+       662         90          0          0          0       4716   twi_hw_master.o
 
     ----------------------------------------------------------------------
-      4282        710        268         72       2896      70142   Object Totals
+      4266        710        268         72       2896      70290   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          8          0          0          0          0          0   (incl. Padding)
 
@@ -601,15 +605,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4424        726        268         72       2896      68662   Grand Totals
-      4424        726        268         72       2896      68662   ELF Image Totals
-      4424        726        268         72          0          0   ROM Totals
+      4408        726        268         72       2896      68766   Grand Totals
+      4408        726        268         72       2896      68766   ELF Image Totals
+      4408        726        268         72          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4692 (   4.58kB)
+    Total RO  Size (Code + RO Data)                 4676 (   4.57kB)
     Total RW  Size (RW Data + ZI Data)              2968 (   2.90kB)
-    Total ROM Size (Code + RO Data + RW Data)       4764 (   4.65kB)
+    Total ROM Size (Code + RO Data + RW Data)       4748 (   4.64kB)
 
 ==============================================================================
 
